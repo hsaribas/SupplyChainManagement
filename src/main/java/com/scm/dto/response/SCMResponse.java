@@ -1,8 +1,11 @@
 package com.scm.dto.response;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class SCMResponse {
 
     private String message;
