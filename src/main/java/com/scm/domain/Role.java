@@ -1,11 +1,14 @@
 package com.scm.domain;
 
 import com.scm.domain.enums.RoleType;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Table(name = "tbl_role")
 @Entity

@@ -1,13 +1,16 @@
 package com.scm.dto.request;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class RegisterRequest {
 
     @Size(max = 100)
@@ -23,7 +26,7 @@ public class RegisterRequest {
     private String email;
 
     @Pattern(regexp = "^((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$", message = "Please provide valid phone number")
-    @Size(min = 14, max = 14)
+    @Size(min = 12, max = 12)
     @NotBlank(message = "Please provide your phone number")
     private String phoneNumber;
 }

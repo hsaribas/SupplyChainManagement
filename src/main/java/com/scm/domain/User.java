@@ -1,12 +1,15 @@
 package com.scm.domain;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Table(name = "tbl_user")
 @Entity
@@ -25,10 +28,10 @@ public class User extends BaseEntity{
     @Column(length = 80, nullable = false, unique = true)
     private String email;
 
-    @Column(length = 14, nullable = false, unique = true)
+    @Column(length = 12, nullable = false, unique = true)
     private String phoneNumber;
 
     @ManyToMany
-    @JoinTable(name = "t_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "tbl_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 }

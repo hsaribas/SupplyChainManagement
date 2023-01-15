@@ -1,11 +1,15 @@
 package com.scm.domain;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Table(name = "tbl_products")
 @Entity
@@ -23,4 +27,8 @@ public class Products {
 
     @Column(nullable = false)
     private BigDecimal price;
+
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "product_id")
+    private Set<ImageFile> image;
 }

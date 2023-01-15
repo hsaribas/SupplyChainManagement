@@ -42,7 +42,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
         } catch (Exception e) {
-            logger.error("User not Found {}:", e.getMessage());
+            logger.error("User not found {}:", e.getMessage());
         }
         filterChain.doFilter(request, response);
     }
@@ -61,5 +61,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         AntPathMatcher antPathMatcher = new AntPathMatcher();
         return antPathMatcher.match("/register", request.getServletPath()) ||
                 antPathMatcher.match("/login", request.getServletPath());
+
     }
 }

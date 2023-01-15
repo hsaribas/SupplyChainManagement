@@ -12,7 +12,6 @@ import com.scm.exception.message.ErrorMessage;
 import com.scm.mapper.UserMapper;
 import com.scm.repository.ProductsRepository;
 import com.scm.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -60,7 +59,7 @@ public class UserService {
 
         User user = new User();
         user.setName(registerRequest.getName());
-        user.setPassword(registerRequest.getPassword());
+        user.setPassword(encodedPassword);
         user.setEmail(registerRequest.getEmail());
         user.setPhoneNumber(registerRequest.getPhoneNumber());
         user.setRoles(roles);
@@ -82,7 +81,7 @@ public class UserService {
 
         User user = new User();
         user.setName(registerRequest.getName());
-        user.setPassword(registerRequest.getPassword());
+        user.setPassword(encodedPassword);
         user.setEmail(registerRequest.getEmail());
         user.setPhoneNumber(registerRequest.getPhoneNumber());
         user.setRoles(roles);
@@ -91,25 +90,25 @@ public class UserService {
     }
 
     public User getUserByEmail(String email) {
-         return userRepository.findByEmail(email).orElseThrow(() -> new
+        return userRepository.findByEmail(email).orElseThrow(() -> new
                 ResourceNotFoundException(String.format(ErrorMessage.USER_NOT_FOUND_MESSAGE, email)));
     }
 
-    public List<Products> getAllProducts(){
+    public List<Products> getAllProducts() {
 
         return productsRepository.findAll();
     }
 
-    public void updateProductByUpdateProductRequest(ProductUpdateRequest productUpdateRequest){
-        List<Products> products=  productsService.getAllProducts();
+    public void updateProductByUpdateProductRequest(ProductUpdateRequest productUpdateRequest) {
+        List<Products> products = productsService.getAllProducts();
         try {
-            for (Products product: products) {
-                if (product.getProductName().equals(productUpdateRequest.getProductName())){
+            for (Products product : products) {
+                if (product.getProductName().equals(productUpdateRequest.getProductName())) {
                     product.setQuantity(productUpdateRequest.getQuantity());
                     productsService.saveProduct(product);
                 }
             }
-        }catch(ResourceNotFoundException e){
+        } catch (ResourceNotFoundException e) {
             String.format(ErrorMessage.PRODUCT_NOT_FOUND_MESSAGE, productUpdateRequest.getProductName());
         }
     }

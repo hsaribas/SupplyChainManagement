@@ -1,10 +1,14 @@
 package com.scm.dto;
 
-import lombok.Data;
+import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductsDTO {
 
     private String productName;
@@ -12,4 +16,6 @@ public class ProductsDTO {
     private int quantity;
 
     private BigDecimal price;
+
+    private Set<String> image;
 }
