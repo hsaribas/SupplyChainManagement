@@ -61,6 +61,5 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         AntPathMatcher antPathMatcher = new AntPathMatcher();
         return antPathMatcher.match("/register", request.getServletPath()) ||
                 antPathMatcher.match("/login", request.getServletPath());
-
     }
 }

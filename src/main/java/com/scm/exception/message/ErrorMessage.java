@@ -7,12 +7,7 @@ public class ErrorMessage {
     public final static String USER_NOT_FOUND_MESSAGE = "User with email %s not found";
     public final static String PRODUCT_NOT_FOUND_MESSAGE = "Product with name %s not found";
     public final static String PRODUCT_ALREADY_EXIST_MESSAGE = "Product: %s already exist";
-    public final static String PRINCIPAL_FOUND_MESSAGE = "User not found";
     public final static String EMAIL_ALREADY_EXIST_MESSAGE = "Email: %s already exist";
     public final static String ROLE_NOT_FOUND_MESSAGE = "Role: %s not found";
-    public final static String NOT_PERMITTED_METHOD_MESSAGE = "You don't have any permission to change this data";
-    public final static String PASSWORD_NOT_MATCHED = "Your passwords are not matched";
     public final static String IMAGE_NOT_FOUND_MESSAGE = "ImageFile with id %s not found";
-    public final static String IMAGE_USED_MESSAGE = "ImageFile is used by other car";
-
 }

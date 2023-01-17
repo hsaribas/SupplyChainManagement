@@ -50,6 +50,8 @@ public class UserService {
             throw new ConflictException(String.format(ErrorMessage.EMAIL_ALREADY_EXIST_MESSAGE, registerRequest.getEmail()));
         }
 
+//        roleService.setRole();
+
         Role role = roleService.findByType(RoleType.ROLE_RETAILER);
 
         Set<Role> roles = new HashSet<>();

@@ -35,8 +35,7 @@ public class SecurityConfig {
                 sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().
                 authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll().and().
                 authorizeRequests().
-                antMatchers("/retailer/register", "/retailer/login", "/supplier/register", "/supplier/login",
-                        "/actuator/info", "/actuator/health").permitAll().
+                antMatchers("/retailer/**", "/supplier/**", "/actuator/info", "/actuator/health").permitAll().
                 anyRequest().authenticated();
 
         http.addFilterBefore(authTokenFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -36,7 +36,7 @@ public class RetailerController {
 
     //http://localhost:8080/retailer/register
     @PostMapping("/register")
-    private ResponseEntity<SCMResponse> registerRetailer(@Valid @RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<SCMResponse> registerRetailer(@Valid @RequestBody RegisterRequest registerRequest) {
         userService.saveRetailer(registerRequest);
 
         SCMResponse response = new SCMResponse();

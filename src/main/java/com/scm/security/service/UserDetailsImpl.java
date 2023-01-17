@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 @Setter
 @AllArgsConstructor
 public class UserDetailsImpl implements UserDetails {
-
     /**
      *
      */
@@ -35,7 +34,8 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     public static UserDetailsImpl build(User user) {
-        List<SimpleGrantedAuthority> authorities = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getType().name())).collect(Collectors.toList());
+        List<SimpleGrantedAuthority> authorities = user.getRoles().stream().map(role ->
+                new SimpleGrantedAuthority(role.getType().name())).collect(Collectors.toList());
         return new UserDetailsImpl(user.getEmail(), user.getPassword(), authorities);
     }
 

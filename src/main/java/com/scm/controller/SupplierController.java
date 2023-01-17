@@ -35,7 +35,7 @@ public class SupplierController {
 
     //http://localhost:8080/supplier/register
     @PostMapping("/register")
-    private ResponseEntity<SCMResponse> registerSupplier(@Valid @RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<SCMResponse> registerSupplier(@Valid @RequestBody RegisterRequest registerRequest) {
         userService.saveSupplier(registerRequest);
 
         SCMResponse response = new SCMResponse();
