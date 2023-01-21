@@ -31,10 +31,12 @@ public class BillingService {
                 billing.setProductPrice(product.getPrice());
                 billing.setProductQuantity(billingDTO.getProductQuantity());
                 product.setQuantity(product.getQuantity() - billingDTO.getProductQuantity());
+
                 productsService.saveProduct(product);
             }
         });
         billingRepository.save(billing);
+
         return billing;
     }
 }

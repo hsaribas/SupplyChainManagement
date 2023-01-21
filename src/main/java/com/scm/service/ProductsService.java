@@ -55,12 +55,7 @@ public class ProductsService {
         Products products = productsRepository.findByProductName(productsName).orElseThrow(() ->
                 new ResourceNotFoundException(String.format(ErrorMessage.PRODUCT_NOT_FOUND_MESSAGE, productsName)));
 
-        ProductsDTO productsDTO = new ProductsDTO();
-        productsDTO.setProductName(products.getProductName());
-        productsDTO.setQuantity(products.getQuantity());
-        productsDTO.setPrice(products.getPrice());
-
-        return productsDTO;
+        return findById(products.getId());
     }
 
     public Products getProductById(Long id) {

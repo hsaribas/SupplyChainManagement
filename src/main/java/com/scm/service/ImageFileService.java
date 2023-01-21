@@ -38,9 +38,8 @@ public class ImageFileService {
     }
 
     public ImageFile getImageById(String imageId) {
-        ImageFile imageFile = imageFileRepository.findById(imageId).orElseThrow(() -> new
+        return imageFileRepository.findById(imageId).orElseThrow(() -> new
                 ResourceNotFoundException(String.format(ErrorMessage.IMAGE_NOT_FOUND_MESSAGE, imageId)));
-        return imageFile;
     }
 
     public List<ImageFileDTO> getAllImages() {
