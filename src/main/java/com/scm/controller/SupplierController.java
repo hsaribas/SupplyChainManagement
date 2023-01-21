@@ -56,6 +56,7 @@ public class SupplierController {
         String jwtToken = jwtUtils.generateJwtToken(userDetails);
 
         LoginResponse loginResponse = new LoginResponse(jwtToken);
+
         return new ResponseEntity<>(loginResponse, HttpStatus.OK);
     }
 
@@ -66,6 +67,7 @@ public class SupplierController {
         userService.updateProductByUpdateProductRequest(productUpdateRequest);
 
         SCMResponse response = new SCMResponse(ResponseMessage.PRODUCT_UPDATED_RESPONSE_MESSAGE, true);
+
         return ResponseEntity.ok(response);
     }
 }

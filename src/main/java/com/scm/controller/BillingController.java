@@ -23,6 +23,7 @@ public class BillingController {
     @PostMapping("/generate")
     public ResponseEntity<Billing> generateBilling(@RequestBody BillingDTO billingDTO) {
         Billing billing = billingService.generateBilling(billingDTO);
+
         return ResponseEntity.ok(billing);
     }
 }

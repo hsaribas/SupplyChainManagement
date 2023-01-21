@@ -57,6 +57,7 @@ public class RetailerController {
         String jwtToken = jwtUtils.generateJwtToken(userDetails);
 
         LoginResponse loginResponse = new LoginResponse(jwtToken);
+
         return new ResponseEntity<>(loginResponse, HttpStatus.OK);
     }
 

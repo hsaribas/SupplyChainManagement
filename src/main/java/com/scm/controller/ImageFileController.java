@@ -23,12 +23,13 @@ public class ImageFileController {
     @Autowired
     private ImageFileService imageFileService;
 
-    //http://localhost:8080/files/upload
+    //http://localhost:8080/files/upload?file=
     @PostMapping("/upload")
     @PreAuthorize("hasRole('RETAILER')")
     public ResponseEntity<ImageSavedResponse> uploadFile(@RequestParam("file") MultipartFile file) {
         String imageId = imageFileService.saveImage(file);
         ImageSavedResponse response = new ImageSavedResponse(imageId, ResponseMessage.IMAGE_SAVED_RESPONSE_MESSAGE, true);
+
         return ResponseEntity.ok(response);
     }
 
@@ -36,6 +37,7 @@ public class ImageFileController {
     @GetMapping("/download/{id}")
     public ResponseEntity<byte[]> downloadFile(@PathVariable String id) {
         ImageFile imageFile = imageFileService.getImageById(id);
+
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + imageFile.getName()).
                 body(imageFile.getImageData().getData());
     }
@@ -46,6 +48,7 @@ public class ImageFileController {
         ImageFile imageFile = imageFileService.getImageById(id);
         HttpHeaders header = new HttpHeaders();
         header.setContentType(MediaType.IMAGE_PNG);
+
         return new ResponseEntity<>(imageFile.getImageData().getData(), header, HttpStatus.OK);
     }
 
@@ -54,6 +57,7 @@ public class ImageFileController {
     @PreAuthorize("hasRole('RETAILER')")
     public ResponseEntity<List<ImageFileDTO>> getAllImages() {
         List<ImageFileDTO> allImageDTO = imageFileService.getAllImages();
+
         return ResponseEntity.ok(allImageDTO);
     }
 }

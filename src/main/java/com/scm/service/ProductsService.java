@@ -29,18 +29,6 @@ public class ProductsService {
     @Autowired
     private ImageFileService imageFileService;
 
-    public ProductsDTO searchProductByName(String productsName) {
-        Products products = productsRepository.findByProductName(productsName).orElseThrow(() ->
-                new ResourceNotFoundException(String.format(ErrorMessage.PRODUCT_NOT_FOUND_MESSAGE, productsName)));
-
-        ProductsDTO productsDTO = new ProductsDTO();
-        productsDTO.setProductName(products.getProductName());
-        productsDTO.setQuantity(products.getQuantity());
-        productsDTO.setPrice(products.getPrice());
-
-        return productsDTO;
-    }
-
     public void addNewProduct(String ImageId, ProductsDTO productsDTO) {
         ImageFile imageFile = imageFileService.findImageById(ImageId);
         List<Products> productsFound = productsRepository.findAll();
@@ -61,6 +49,18 @@ public class ProductsService {
         products.setImage(imFiles);
 
         productsRepository.save(products);
+    }
+
+    public ProductsDTO searchProductByName(String productsName) {
+        Products products = productsRepository.findByProductName(productsName).orElseThrow(() ->
+                new ResourceNotFoundException(String.format(ErrorMessage.PRODUCT_NOT_FOUND_MESSAGE, productsName)));
+
+        ProductsDTO productsDTO = new ProductsDTO();
+        productsDTO.setProductName(products.getProductName());
+        productsDTO.setQuantity(products.getQuantity());
+        productsDTO.setPrice(products.getPrice());
+
+        return productsDTO;
     }
 
     public Products getProductById(Long id) {
