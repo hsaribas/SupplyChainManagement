@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "877d9e88-435d-49b3-ad26-3c31f4f17ee7",
+		"name": "SupplyChainManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22933126"
+	},
+	"item": [
+		{
+			"name": "Retailer",
+			"item": [
+				{
+					"name": "Retailer Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"retailer1\",\r\n    \"password\": \"retailer123\",\r\n    \"email\": \"retailer1@retailer.com\",\r\n    \"phoneNumber\": \"111-111-1111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/retailer/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"retailer",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retailer Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"retailer1@retailer.com\",\r\n    \"password\": \"retailer123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/retailer/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"retailer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retailer View Products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/retailer/view/products",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"retailer",
+								"view",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Supplier",
+			"item": [
+				{
+					"name": "Supplier Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"supplier1\",\r\n    \"password\": \"supplier123\",\r\n    \"email\": \"supplier1@supplier.com\",\r\n    \"phoneNumber\": \"222-222-2222\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/supplier/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"supplier",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Supplier Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/supplier/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"supplier",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Supplier Update Products",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\": \"\",\r\n    \"quantity\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/supplier/update/products",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"supplier",
+								"update",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Save Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenRet}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\": \"Foldable Table\",\r\n    \"quantity\": \"43\",\r\n    \"price\": \"35.00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/products/38c49ee1-a13e-48c8-a856-ef3bb2d57e1f/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"38c49ee1-a13e-48c8-a856-ef3bb2d57e1f",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/get?productName=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"get"
+							],
+							"query": [
+								{
+									"key": "productName",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenRet}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/{id}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Billing",
+			"item": [
+				{
+					"name": "Generate Billing",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\": \"\",\r\n    \"quantity\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/billing/generate",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"billing",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Image",
+			"item": [
+				{
+					"name": "Upload File",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/files/upload?file=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"files",
+								"upload"
+							],
+							"query": [
+								{
+									"key": "file",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download File",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/files/download/{id}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"files",
+								"download",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Display File",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/files/display/{id}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"files",
+								"display",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Images",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/files",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"files"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
